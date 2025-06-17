@@ -1,0 +1,224 @@
+\documentclass{beamer}
+\usetheme{metropolis}           % Use metropolis theme
+\title{Formalizing Modal Embeddings of Call-by-Name and Call-by-Value}
+\date{\today}
+\author[Floris Reuvers]{Floris Reuvers \\[1ex]
+  \small Supervisor: dr. N.M. van der Weide \\
+  \small Second Reader: dr. E.G.M. Hubbers
+}
+\institute{Radboud University} % What is actually the institute?
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{rutitlepage}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{cmll}
+\usepackage{lipsum}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{cleveref}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{latexsym}
+\usepackage{newunicodechar}
+\usepackage{code/latex/agda} % path to generated agda.sty
+
+\newcommand{\lambdabar}{\lambda\!\!\raisebox{0.6ex}{\scalebox{0.8}{--}}}
+
+\newunicodechar{□}{\ensuremath{\mathnormal\square}}
+\newunicodechar{⇒}{\ensuremath{\mathnormal\Rightarrow}}
+\newunicodechar{λ}{\ensuremath{\mathnormal\lambda}}
+\newunicodechar{↝}{\ensuremath{\mathnormal\leadsto}}
+\newunicodechar{₁}{\ensuremath{_1}}
+\newunicodechar{₂}{\ensuremath{_2}}
+\newunicodechar{ₙ}{\ensuremath{_n}}
+\newunicodechar{ν}{\ensuremath{\mathnormal\nu}}
+\newunicodechar{ζ}{\ensuremath{\mathnormal\zeta}}
+\newunicodechar{ξ}{\ensuremath{\mathnormal\xi}}
+\newunicodechar{μ}{\ensuremath{\mathnormal\mu}}
+\newunicodechar{β}{\ensuremath{\mathnormal\beta}}
+\newunicodechar{⊢}{\ensuremath{\mathnormal\vdash}}
+\newunicodechar{Γ}{\ensuremath{\mathnormal\Gamma}}
+\newunicodechar{Δ}{\ensuremath{\mathnormal\Delta}}
+\newunicodechar{∀}{\ensuremath{\mathnormal\forall}}
+\newunicodechar{ƛ}{\ensuremath{\lambda\mkern-8mu\raisebox{0.45ex}{\rotatebox{15}{\scalebox{0.8}{--}}}}}
+
+
+\RequirePackage{defs}
+\RequirePackage{bussproofs}
+\RequirePackage{formalgrammars}
+
+\theoremstyle{definition}
+% \newtheorem{theorem}{Theorem}[chapter] %QUESTION, SECTION OR CHAPTER?
+% \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{proposition}[theorem]{Proposition}
+% \newtheorem{example}[theorem]{Example}
+
+% \crefname{definition}{Definition}{Definitions}
+% \Crefname{definition}{Definition}{Definitions}
+
+\begin{document}
+  \maketitle
+  %\section{Research Question}
+  \begin{frame}{Research Question}
+    \Large
+    How can the unification of call-by-name and call-by-value evaluation strategies using modal logic be formalised in Agda?
+  \end{frame}
+
+  \section{Introduction}
+  \begin{frame}{Call-by-name}
+    \begin{block}{Let f be defined as}
+      \begin{flalign*}
+        & f (x) = x * x &
+      \end{flalign*}
+    \end{block} \pause
+
+    \begin{block}{Call-by-name evaluation of f (3 + 3)}
+      \begin{align*}
+        \onslide<2->{f (3 + 3) & \to (3 + 3) * (3 + 3)} \\
+        \onslide<3->{          & \to 6 * (3 + 3)} \\
+        \onslide<4->{          & \to 6 * 6} \\
+        \onslide<5->{          & \to 36}
+      \end{align*}
+    \end{block} \pause
+  \end{frame}
+
+  \begin{frame}{Call-by-value}
+    \begin{block}{Let f be defined as}
+      \begin{flalign*}
+        & f (x) = x * x &
+      \end{flalign*}
+    \end{block} \pause
+
+    \begin{block}{Call-by-value evaluation of f (3 + 3)}
+      \begin{align*}
+        \onslide<2->{f (3 + 3) & \to f (6) } \\
+        \onslide<3->{          & \to 6 * 6} \\
+        \onslide<4->{          & \to 36}
+      \end{align*}
+    \end{block} \pause
+  \end{frame}
+
+  \begin{frame}{Unifying cbn and cbv}
+    \begin{itemize}
+      \item[\textbullet] Why unify cbn and cbv?
+      \item[\textbullet] Some approaches to unification:
+        \begin{itemize}
+          \item[--] Modal logic
+          \item[--] Linear logic
+          \item[--] Thunks
+        \end{itemize}
+    \end{itemize}
+  \end{frame}
+
+  \section{Background}
+  \begin{frame}{Grammar Lambda Calculus (\lc)}
+    \begin{grammar}{
+      \pr{$M, N, P, Q$}{$x \gors \lambda x.M \gors M N$}
+    }
+    \end{grammar}
+  \end{frame}
+  \begin{frame}{Call-by-name \lc}
+    Lorem ipsum
+  \end{frame}
+  \begin{frame}{Call-by-value \lc}
+    Lorem ipsum
+  \end{frame}
+  \begin{frame}{Evaluation Relations}
+    Lorem ipsum
+  \end{frame}
+  \begin{frame}{Call-by-box \lc}
+    Lorem ipsum
+  \end{frame}
+  \begin{frame}{Evaluation Relations of \lab}
+    Lorem ipsum
+  \end{frame}
+  \begin{frame}{Girard's Translation}
+    Lorem ipsum
+  \end{frame}
+  \begin{frame}{Gödel's Translation}
+    Lorem ipsum
+  \end{frame}
+
+  \section{Formalisation in Agda}
+  \begin{frame}{\lterms in Agda}
+    Lorem ipsum
+  \end{frame}
+  
+  \section{Propositions}
+  \begin{frame}{Girard's Translation}
+    Lorem ipsum
+  \end{frame}
+  \begin{frame}{Gödel's Translation}
+    Lorem ipsum
+  \end{frame}
+
+  \section{Conclusion}
+  \begin{frame}{Conclusion}
+    Lorem ipsum
+  \end{frame}
+  % \begin{frame}{Boxed Lambda Calculus}
+  %   \small
+  %   \begin{block}{Cbn \lc (\lan)}
+  %     \begin{grammar}{
+  %       \pr{$M, N, P, Q$}{$x \gors \lambda x.M \gors M N$}
+  %     }
+  %     \end{grammar}
+  %     \begin{align*}
+  %       (\lamb{x}{M})N \red M \subst{x}{N} \quad \quad (\bn)
+  %     \end{align*}
+  %   \end{block}
+  %   \small
+  %   \begin{block}{Boxed \lc (\lab)}
+  %     \begin{grammar}{
+  %       \pr{$M, N, P, Q$}{$\boxe{x} \gors \lambda x.M \gors M N \gors \boxi{N}$}
+  %     }
+  %     \end{grammar}
+  %     \begin{align*}
+  %       (\lamb{x}{M})\boxi{N} \red M \subst{\boxe{x}}{N} \quad \quad (\bb)
+  %     \end{align*}
+  %   \end{block}
+  %   \small
+  %   \begin{block}{Girard's Translation}
+  %     \begin{align*}
+  %       \girard{X}                 & = X                                          & \girard{x}             & = \boxe{x} \\
+  %       \girard{(A_1 \fa A_2)}     & = \boxt{\girard{A_1}} \fa \girard{A_2}       & \girard{(\lamb{x}{M})} & = \lamb{x}{\girard{M}} \\
+  %                                   &                                              & \girard{(M N)}         & = \girard{M} \boxi{\girard{N}}
+  %     \end{align*}
+  %   \end{block}
+  % \end{frame}
+  % \section{Research Results}
+  % \begin{frame}[fragile]{Research Results}
+  %   \begin{block}{Preservation of Reduction}
+  %     \center  
+  %     If $M \rednb N$ then $\girard{M} \redbbox \girard{N}$.
+  %   \end{block}
+  %   \tiny
+  %   \begin{block}{Agda Proof}
+  %     \input{code/latex/pres-red.tex}
+  %   \end{block}
+  % \end{frame}
+  % \begin{frame}[fragile]{Research Results}
+  %   \begin{block}{Preservation of Evaluation}
+  %     If $M \redn N$ then $\girard{M} \redbn \girard{N}$.
+  %   \end{block}
+  %   \small
+  %   \begin{block}{Agda Proof}
+  %     \input{code/latex/pres-eval.tex}
+  %   \end{block}
+  % \end{frame}
+\end{document}

@@ -1,0 +1,121 @@
+\newcommand{\la}{\lambda}
+\newcommand{\lan}{$\la_n$\xspace}
+\newcommand{\lav}{$\la_v$\xspace}
+\newcommand{\lab}{$\la_b$\xspace}
+\newcommand{\labox}{$\la_\square$\xspace}
+\newcommand{\lc}{$\lambda$-calculus\xspace}
+\newcommand{\lterm}{$\lambda$-term\xspace}
+\newcommand{\lterms}{$\lambda$-terms\xspace}
+\newcommand{\br}{$\beta$-reduction\xspace}
+\newcommand{\bre}{$\beta$-redex\xspace}
+\newcommand{\bres}{$\beta$-redexes\xspace}
+\newcommand{\aeq}{$\alpha$ equivalence\xspace}
+\newcommand{\aeqr}{\equiv_a}
+
+\newcommand{\judgement}[3][0.0em]{%
+	\hspace{#1} {#2} \vdash {#3} \hspace{#1}
+} % strut for extra height
+
+\newcommand{\subst}[2]{
+	[{#1}:={#2}]
+}
+
+% Beta-reductions
+\newcommand{\red}{\to}
+\newcommand{\redb}{\red_\beta}
+\newcommand{\redn}{\red_n}
+\newcommand{\redns}{\red_n^*}
+\newcommand{\redv}{\red_v}
+\newcommand{\redw}{\red_w}
+\newcommand{\rednb}{\red_{\beta_n}}
+\newcommand{\redvb}{\red_{\beta_v}}
+
+\newcommand{\redbox}{\red_b}
+\newcommand{\redbbox}{\red_{\beta_b}}
+\newcommand{\redwe}{\red_{we}}
+\newcommand{\redwes}{\red_{we_<}}
+\newcommand{\redweg}{\red_{we_>}}
+\newcommand{\redbn}{\red_{b_n}}
+\newcommand{\redbv}{\red_{b_v}}
+\newcommand{\bn}{\beta_n}
+\newcommand{\bv}{\beta_v}
+\newcommand{\bb}{\beta_b}
+
+% Intuitionistic Logic
+\newcommand{\myor}{+}
+\newcommand{\myand}{\times}
+\newcommand{\myimplies}{\to} % implication arrow
+% Term language
+\newcommand{\fa}{\to} % function arrow
+\newcommand{\pair}[2]{({#1}, {#2})} % pair
+\newcommand{\inl}[1]{\text{inl(${#1}$)}} % inl
+\newcommand{\inr}[1]{\text{inr(${#1}$)}} % inr
+\newcommand{\caseofor}[5]{\text{case } {#1} \text{ of } \inl{#2} \to {#3} \text{; } \inr{#4} \to {#5}} % case of
+\newcommand{\caseofand}[3]{\text{case } {#1} \text{ of } {#2} \fa {#3}}
+\newcommand{\lamb}[2]{\la {#1}.{#2}}
+\newcommand{\bi}{\mathbf{I}}
+
+% Types Boxed lambda calculus
+\newcommand{\boxt}[1]{\square{#1}}
+
+% Term language Boxed lambda calculus
+\newcommand{\boxe}[1]{\varepsilon(#1)}
+\newcommand{\boxi}[1]{\mathsf{box}({#1})}
+\newcommand{\boxit}[1]{\square{#1}}
+
+% Linear Logic
+\newcommand{\lass}[1]{\langle{#1}\rangle}
+\newcommand{\iass}[1]{[ {#1} ]}
+\newcommand{\bang}[1]{\phantom{ }!{#1}}
+\newcommand{\limplies}{\multimap}
+\newcommand{\ltensor}{\otimes}
+\newcommand{\lwith}{\with}
+\newcommand{\leither}{\oplus}
+
+% Rules Intuitionistic Logic
+\newcommand{\impliesi}{$\myimplies$-I}
+\newcommand{\impliese}{$\myimplies$-E}
+
+% Rules Linear Logic
+\newcommand{\lid}{$\langle \text{Id} \rangle$}
+\newcommand{\iid}{$[ \text{Id} ]$}
+\newcommand{\bangi}{$!$-I}
+\newcommand{\bange}{$!$-E}
+\newcommand{\limpliesi}{$\limplies$-I}
+\newcommand{\limpliese}{$\limplies$-E}
+\newcommand{\ltensori}{$\ltensor$-I}
+\newcommand{\ltensore}{$\ltensor$-E}
+\newcommand{\lwithi}{$\lwith$-I}
+\newcommand{\lwithef}{$\lwith$-E\textsubscript{1}}
+\newcommand{\lwithes}{$\lwith$-E\textsubscript{2}}
+\newcommand{\leitherif}{$\leither$-I\textsubscript{1}}
+\newcommand{\leitheris}{$\leither$-I\textsubscript{2}}
+\newcommand{\leithere}{$\leither$-E}
+
+% Term Language
+\newcommand{\lfa}{\multimap} % function arrow
+\newcommand{\lwpair}[2]{\langle \langle {#1}, {#2} \rangle \rangle} % tensor pair
+\newcommand{\ltpair}[2]{\langle {#1}, {#2} \rangle} % with pair
+\newcommand{\linl}[1]{\text{inl$ \langle {#1} \rangle $}} % inl
+\newcommand{\linr}[1]{\text{inr$ \langle {#1} \rangle $}} % inr
+\newcommand{\lcaseofor}[5]{\text{case } {#1} \text{ of } \linl{#2} \to {#3} \text{; } \linr{#4} \to {#5}} % case of
+\newcommand{\lcaseofand}[4]{\text{case } {#1} \text{ of } \ltpair{#2}{#3} \to {#4}}
+\newcommand{\lcaseofbang}[3]{\text{case } {#1} \text{ of } !{#2} \to {#3}}
+\newcommand{\llamb}[2]{\la \langle {#1} \rangle.{#2}}
+\newcommand{\lapp}[2]{{#1} \langle {#2} \rangle}
+\newcommand{\lfst}[1]{\text{fst} \langle {#1} \rangle}
+\newcommand{\lsnd}[1]{\text{snd} \langle {#1} \rangle}
+
+
+% Embeddings
+\newcommand{\Tcbn}{T}
+\newcommand{\TTcbn}{T_t}
+\newcommand{\T}{\mathcal{T}}
+
+\newcommand{\Tcbv}{T}
+\newcommand{\TTcbv}{T_t}
+\newcommand{\raiseemb}[1]{\textsf{raise}({#1})}
+
+\newcommand{\girard}[1]{{#1}^\circ}
+\newcommand{\godel}[1]{{#1}^*}
+\newcommand{\godelv}[1]{{#1}^\bullet}
