@@ -80,6 +80,21 @@
   \end{frame}
 
   \section{Introduction}
+  \begin{frame}{Context}
+    \begin{itemize}
+      \item[\textbullet] Functional Programming Languages
+      \item[\textbullet] Evaluation Strategies
+        \begin{itemize}
+          \item[--] Call-by-value (cbv): OCaml/F\#/SML
+          \item[--] Call-by-name (cbn)/Lazy Evaluation: Haskell/Clean
+        \end{itemize}
+      \item[\textbullet] Idea of cbn and cbv
+        \begin{itemize}
+          \item[--] cbv: first evaluate the argument, then the beta
+          \item[--] cbn: evaluate the beta 
+        \end{itemize}
+    \end{itemize}
+  \end{frame}
   \begin{frame}{Call-by-name}
     \begin{block}{Let f be defined as}
       \begin{flalign*}
@@ -87,41 +102,38 @@
       \end{flalign*}
     \end{block} \pause
 
-    \begin{block}{Call-by-name evaluation of f (3 + 3)} \pause
+    \begin{block}{cbn and cbv evaluation of f (3 + 3)} \pause
       \begin{align*}
-        \onslide<3->{f (3 + 3) & \to (3 + 3) * (3 + 3)} \\
-        \onslide<4->{          & \to 6 * (3 + 3)} \\
-        \onslide<5->{          & \to 6 * 6} \\
-        \onslide<6->{          & \to 36}
+        \onslide<3->{& \textsf{\textbf{cbn:}} &                    & \textsf{\textbf{cvb:}} &           } \\
+        \onslide<4->{f (3 + 3)    & \to (3 + 3) * (3 + 3) & f (3 + 3)     & \to f (6) } \\
+        \onslide<5->{             & \to 6 * (3 + 3)       &               & \to 6 * 6 } \\
+        \onslide<6->{             & \to 6 * 6             &               & \to 36 }    \\
+        \onslide<7->{             & \to 36}
       \end{align*}
     \end{block} \pause
   \end{frame}
 
-  \begin{frame}{Call-by-value}
-    \begin{block}{Let f be defined as}
-      \begin{flalign*}
-        & f (x) = x * x &
-      \end{flalign*}
-    \end{block} \pause
-
-    \begin{block}{Call-by-value evaluation of f (3 + 3)} \pause
-      \begin{align*}
-        \onslide<3->{f (3 + 3) & \to f (6) } \\
-        \onslide<4->{          & \to 6 * 6} \\
-        \onslide<5->{          & \to 36}
-      \end{align*}
-    \end{block} \pause
-  \end{frame}
-
-  \begin{frame}{Unifying cbn and cbv}
+  \begin{frame}{Reasons to unify cbn and cbv}
     \begin{itemize}
-      \item[\textbullet] Why unify cbn and cbv?
-      \item[\textbullet] Some approaches to unification:
-        \begin{itemize}
-          \item[--] Modal logic
-          \item[--] Linear logic
-          \item[--] Thunks
-        \end{itemize}
+      \item[\textbullet] Reason 1
+      \item[\textbullet] Reason 2
+      \item[\textbullet] Reason 3
+    \end{itemize}
+    % \begin{itemize}
+    %   \item[\textbullet] Why unify cbn and cbv?
+    %   \item[\textbullet] Some approaches to unification:
+    %     \begin{itemize}
+    %       \item[--] Modal logic
+    %       \item[--] Linear logic
+    %       \item[--] Thunks
+    %     \end{itemize}
+    % \end{itemize}
+  \end{frame}
+  \begin{frame}{Approaches to unification}
+    \begin{itemize}
+      \item[\textbullet] Modal logic
+      \item[\textbullet] Linear logic
+      \item[\textbullet] Thunks
     \end{itemize}
   \end{frame}
 
