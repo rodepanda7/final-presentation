@@ -87,12 +87,12 @@
       \end{flalign*}
     \end{block} \pause
 
-    \begin{block}{Call-by-name evaluation of f (3 + 3)}
+    \begin{block}{Call-by-name evaluation of f (3 + 3)} \pause
       \begin{align*}
-        \onslide<2->{f (3 + 3) & \to (3 + 3) * (3 + 3)} \\
-        \onslide<3->{          & \to 6 * (3 + 3)} \\
-        \onslide<4->{          & \to 6 * 6} \\
-        \onslide<5->{          & \to 36}
+        \onslide<3->{f (3 + 3) & \to (3 + 3) * (3 + 3)} \\
+        \onslide<4->{          & \to 6 * (3 + 3)} \\
+        \onslide<5->{          & \to 6 * 6} \\
+        \onslide<6->{          & \to 36}
       \end{align*}
     \end{block} \pause
   \end{frame}
@@ -104,11 +104,11 @@
       \end{flalign*}
     \end{block} \pause
 
-    \begin{block}{Call-by-value evaluation of f (3 + 3)}
+    \begin{block}{Call-by-value evaluation of f (3 + 3)} \pause
       \begin{align*}
-        \onslide<2->{f (3 + 3) & \to f (6) } \\
-        \onslide<3->{          & \to 6 * 6} \\
-        \onslide<4->{          & \to 36}
+        \onslide<3->{f (3 + 3) & \to f (6) } \\
+        \onslide<4->{          & \to 6 * 6} \\
+        \onslide<5->{          & \to 36}
       \end{align*}
     \end{block} \pause
   \end{frame}
@@ -127,26 +127,60 @@
 
   \section{Background}
   \begin{frame}{Grammar Lambda Calculus (\lc)}
-    \begin{grammar}{
-      \pr{$M, N, P, Q$}{$x \gors \lambda x.M \gors M N$}
-    }
-    \end{grammar}
+    \begin{align*}
+      \begin{grammar}{
+        \pr{$A$}{$X \gors A \fa A'$}
+      } \quad
+      \end{grammar}
+      \begin{grammar}{
+        \pr{$M, N, P, Q$}{$x \gors \lambda x.M \gors M N$}
+      }
+      \end{grammar}
+    \end{align*}
+    \begin{block}{Example terms} \pause
+      \begin{itemize}
+        \item $x$ \pause
+        \item $\lamb{x}{x}$ \pause
+        \item $\lamb{y}{y} z$ \pause
+        \item $(\lamb{y}{y}) z$ \pause
+        \item $\lamb{x}{\lamb{t}{x t (\lamb{s}{w})}wy}$
+      \end{itemize}
+    \end{block}
   \end{frame}
-  \begin{frame}{Call-by-name \lc}
+  \begin{frame}{Call-by-name and call-by-value \lc}
     Lorem ipsum
   \end{frame}
-  \begin{frame}{Call-by-value \lc}
-    Lorem ipsum
+  \begin{frame}{Closure Rules}
+    Here we define closure rules
   \end{frame}
   \begin{frame}{Evaluation Relations}
     Lorem ipsum
   \end{frame}
   \begin{frame}{Call-by-box \lc}
-    Lorem ipsum
+    \begin{block}{Grammer}
+      \begin{align*}
+        \begin{grammar}{
+          \pr{$A$}{$X \gors B \fa A \gors B$}
+        } \quad \quad
+        \end{grammar}
+        \begin{grammar}{
+          \pr{$B$}{$\boxit{A}$}
+        }
+        \end{grammar}
+      \end{align*}
+      \begin{align*}    
+        \begin{grammar}{
+          \pr{$M, N, P, Q$}{$\boxe{x} \gors \lambda x.M \gors M N \gors \boxi{N}$}
+        }
+        \end{grammar}
+      \end{align*}
+    \end{block}
   \end{frame}
   \begin{frame}{Evaluation Relations of \lab}
     Lorem ipsum
   \end{frame}
+
+  \section{\texorpdfstring{Embeddings into \lab}{Embeddings into the boxed lambda calculus}}
   \begin{frame}{Girard's Translation}
     Lorem ipsum
   \end{frame}
@@ -154,11 +188,24 @@
     Lorem ipsum
   \end{frame}
 
-  \section{Formalisation in Agda}
-  \begin{frame}{\lterms in Agda}
+  \section{Challenges of Formalisation}
+  \begin{frame}{Overview Challenges}
+    \begin{itemize}
+      \item[\textbullet] Variables
+      \item[\textbullet] Ill typed terms
+      \item[\textbullet] Formal definition of \raiseembn
+    \end{itemize}
+  \end{frame}
+  \begin{frame}{De Bruijn Indices}
     Lorem ipsum
   \end{frame}
-  
+  \begin{frame}{Restriction to well-typed terms}
+    Lorem ipsum
+  \end{frame}
+  \begin{frame}{Formal definition of \raiseembn}
+    Lorem ipsum
+  \end{frame}
+
   \section{Propositions}
   \begin{frame}{Girard's Translation}
     Lorem ipsum
