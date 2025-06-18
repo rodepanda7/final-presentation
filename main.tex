@@ -1,4 +1,5 @@
 \documentclass{beamer}
+% \documentclass[handout]{beamer}
 \usetheme{metropolis}           % Use metropolis theme
 \setbeamertemplate{footline}[frame number]
 \title{Formalising Modal Embeddings of Call-by-Name and Call-by-Value}
@@ -79,22 +80,22 @@
   \section{Introduction}
 
   \begin{frame}{Context}
-    \begin{block}{Functional Programming Languages} \pause
+    \begin{block}{Functional Programming Languages}
       \begin{itemize}
-        \item[\textbullet] OCaml, F\#, SML, Haskell, Clean \pause
+        \item[\textbullet] OCaml, F\#, SML, Haskell, Clean
       \end{itemize}
-    \end{block}
+    \end{block} \pause
 
-    \begin{block}{Evaluation Strategies}  \pause
+    \begin{block}{Evaluation Strategies}
       \begin{itemize}
-        \item[\textbullet] \alert{Call-by-value} (\textsf{cbv}) \pause
+        \item[\textbullet] \alert{Call-by-value} (\textsf{cbv})
           \begin{itemize}
-            \item[--] Evaluate the argument first, then substitute \pause
-            \item[--] OCaml, F\#, SML \pause
-          \end{itemize}
-        \item[\textbullet] \alert{Call-by-name} (\textsf{cbn}) / lazy \pause
+            \item[--] Evaluate the argument first, then substitute
+            \item[--] OCaml, F\#, SML 
+          \end{itemize} \pause
+        \item[\textbullet] \alert{Call-by-name} (\textsf{cbn}) / lazy
           \begin{itemize}
-            \item[--] Substitute the argument, evaluate only when needed \pause
+            \item[--] Substitute the argument, evaluate only when needed
             \item[--] Haskell, Clean
           \end{itemize}
       \end{itemize}
@@ -108,31 +109,31 @@
       \end{flalign*}
     \end{block} \pause
     
-    \begin{block}{\alert{\textsf{cbn}} and \alert{\textsf{cbv}} evaluation of f (3 + 3)} \pause
+    \begin{block}{\alert{\textsf{cbn}} and \alert{\textsf{cbv}} evaluation of f (3 + 3)}
       \begin{align*}
-        \onslide<3->{& \textbf{\alert{\textsf{cbn}:}} &                    & \textbf{\alert{cvb:}} &           } \\
-        \onslide<4->{f (3 + 3)    & \to (3 + 3) * (3 + 3) & f (3 + 3)     & \to f (6) } \\
-        \onslide<5->{             & \to 6 * (3 + 3)       &               & \to 6 * 6 } \\
-        \onslide<6->{             & \to 6 * 6             &               & \to 36 }    \\
-        \onslide<7->{             & \to 36}
+        \onslide<2->{& \textbf{\alert{\textsf{cbn}:}} &                    & \textbf{\alert{cbv:}} &           } \\
+        \onslide<3->{f (3 + 3)    & \to (3 + 3) * (3 + 3) & f (3 + 3)     & \to f (6) } \\
+        \onslide<4->{             & \to 6 * (3 + 3)       &               & \to 6 * 6 } \\
+        \onslide<5->{             & \to 6 * 6             &               & \to 36 }    \\
+        \onslide<6->{             & \to 36}
       \end{align*}
     \end{block} \pause
   \end{frame}
   
   \begin{frame}{Reasons to Unify \textsf{cbn} and \textsf{cbv}}
-    \begin{block}{Pros and Conns of \alert{\textsf{cbn}} and \alert{\textsf{cbv}}} \pause
+    \begin{block}{Pros and Cons of \alert{\textsf{cbn}} and \alert{\textsf{cbv}}}
       \begin{itemize}
-        \item Sometimes arguments are used: \pause
+        \item Sometimes arguments are used:
         \begin{itemize}
-          \item[--] \alert{zero} times: \alert{cbn} is more efficient \pause
-          \item[--] \alert{multiple} times: \alert{cbv} is more efficient \pause
+          \item[--] \alert{zero} times: \alert{cbn} is more efficient
+          \item[--] \alert{multiple} times: \alert{cbv} is more efficient
         \end{itemize}
       \end{itemize}
-    \end{block}
+    \end{block} \pause
 
-    \begin{block}{Unification} \pause
+    \begin{block}{Unification}
       \begin{itemize}
-        \item[\textbullet] Best of both worlds \pause
+        \item[\textbullet] Best of both worlds
         \item[\textbullet] Universal Framework
       \end{itemize}
     \end{block}
@@ -249,13 +250,13 @@
         \end{grammar}
       \end{align*}
     \end{block} \pause
-    \begin{block}{Idea} \pause
+    \begin{block}{Idea}
       \begin{itemize}
-        \item[\textbullet] $\varepsilon$: \alert{unbox} operator \pause
-        \item[\textbullet] \textsf{box}: \alert{box} operator \pause
-        \item[\textbullet] paramters of abstractions are \alert{boxed} \pause
+        \item[\textbullet] $\varepsilon$: \alert{unbox} operator
+        \item[\textbullet] \textsf{box}: \alert{box} operator
+        \item[\textbullet] paramters of abstractions are \alert{boxed}
       \end{itemize}
-    \end{block}
+    \end{block} \pause
     \begin{block}{Types}
       \begin{align*}
         \begin{grammar}{
@@ -303,16 +304,15 @@
   \section{\texorpdfstring{Embeddings into \lab}{Embeddings into the boxed lambda calculus}}
   \begin{frame}{Girard's and Gödel's Translation}
     \begin{itemize}
-      \item[\textbullet] Translate standard \lc into \lab \pause
-      \item[\textbullet] \alert{Girard's} translation: \lan into \lab \pause
-      \item[\textbullet] \alert{Gödel's} translation: \lav into \lab \pause
-      \item[\textbullet] \alert{Cbb} simulates \pause
+      \item[\textbullet] Translate standard \lc into \lab
+      \item[\textbullet] \alert{Girard's} translation: \lan into \lab
+      \item[\textbullet] \alert{Gödel's} translation: \lav into \lab
+      \item[\textbullet] \alert{Cbb} simulates
         \begin{itemize}
-          \item[--] \alert{\textsf{cbn}} under \alert{Girard's} embedding \pause
-          \item[--] \alert{\textsf{cbv}} under \alert{Gödel's} embedding \pause
+          \item[--] \alert{\textsf{cbn}} under \alert{Girard's} embedding
+          \item[--] \alert{\textsf{cbv}} under \alert{Gödel's} embedding
         \end{itemize}
-      \item[\textbullet] Notation: $\girard{M}$ is the Girard translation of $\lambda$-term $M$ \pause
-      \item[\textbullet] Main propositions  
+      \item[\textbullet] Notation: $\girard{M}$ is the Girard translation of $\lambda$-term $M$
     \end{itemize}
   \end{frame}
     
@@ -324,12 +324,12 @@
                                    &                                              & \girard{(M N)}         & = \girard{M} \boxi{\girard{N}}
       \end{align*}
     \end{block} \pause
-    \begin{block}{Embedding of \boldmath${(\lamb{x}{x}) y}$} \pause
+    \begin{block}{Embedding of \boldmath${(\lamb{x}{x}) y}$}
       \begin{align*}
-        \onslide<3-> { \girard{\alert{((\lamb{x}{x}) y)}} & = \girard{(\lamb{x}{x})} \boxi{\girard{\alert{y}}} } \\
-                                  \onslide<4-> { & = \girard{\alert{(\lamb{x}{x})}} \boxi{\boxe{y}} }   \\
-                                  \onslide<5-> { & = (\lamb{x}{\girard{\alert{x}}}) \boxi{\boxe{y}} }   \\
-                                  \onslide<6-> { & = (\lamb{x}{\boxe{x}}) \boxi{\boxe{y}} }
+        \onslide<2-> { \girard{\alert{((\lamb{x}{x}) y)}} & = \girard{(\lamb{x}{x})} \boxi{\girard{\alert{y}}} } \\
+                                  \onslide<3-> { & = \girard{\alert{(\lamb{x}{x})}} \boxi{\boxe{y}} }   \\
+                                  \onslide<4-> { & = (\lamb{x}{\girard{\alert{x}}}) \boxi{\boxe{y}} }   \\
+                                  \onslide<5-> { & = (\lamb{x}{\boxe{x}}) \boxi{\boxe{y}} }
       \end{align*}
     \end{block}
   \end{frame}
@@ -344,9 +344,9 @@
     \end{block} \pause
     \vspace{5pt}
     \begin{itemize}
-      \item[\textbullet] Eliminates the \alert{$\nu$} closure rule \pause
-      \item[\textbullet] Only the \alert{$\mu$} rule remains \pause
-      \item[\textbullet] Call-by-box becomes \alert{deterministic} \pause
+      \item[\textbullet] Eliminates the \alert{$\nu$} closure rule
+      \item[\textbullet] Only the \alert{$\mu$} rule remains
+      \item[\textbullet] Call-by-box becomes \alert{deterministic}
       \item[\textbullet] If $M$ evaluates to $N$ with \alert{\textsf{cbn}}, then $\girard{M}$ evaluates to $\girard{N}$ with \alert{\textsf{cbb}} 
     \end{itemize}
   \end{frame}
@@ -355,10 +355,10 @@
 
   \begin{frame}{What is Agda?}
     \begin{itemize}
-      \item[\textbullet] Functional programming language \pause
-      \item[\textbullet] Inspired by Haskell  \pause
-      \item[\textbullet] Proof assistant \pause
-      \item[\textbullet] Dependently typed \pause
+      \item[\textbullet] Functional programming language
+      \item[\textbullet] Inspired by Haskell
+      \item[\textbullet] Proof assistant
+      \item[\textbullet] Dependently typed
       \item[\textbullet] Hole-based programming
     \end{itemize}
   \end{frame}
@@ -377,30 +377,30 @@
 
   \begin{frame}{Challenges}
     \begin{itemize}
-      \item[\textbullet] Variables \pause
+      \item[\textbullet] Variables
         \begin{itemize}
-          \item[--] Use of \alert{de Bruijn indices} \pause
-          \item[--] Variables represented as natural numbers \pause
-        \end{itemize}
-      \item[\textbullet] Ill-typed terms \pause
+          \item[--] Use of \alert{de Bruijn indices}
+          \item[--] Variables represented as natural numbers
+        \end{itemize} \pause
+      \item[\textbullet] Ill-typed terms
         \begin{itemize}
-          \item[--] \lterm $y (\lamb{x}{x})$ is not typeable \pause
-          \item[--] Solution: restrict to \alert{well-typed} \lterms \pause
-        \end{itemize}
-      \item[\textbullet] Formal definition of \alert{substitution} \pause
+          \item[--] \lterm $y (\lamb{x}{x})$ is not typeable
+          \item[--] Solution: restrict to \alert{well-typed} \lterms
+        \end{itemize} \pause
+      \item[\textbullet] Formal definition of \alert{substitution}
       \item[\textbullet] Formal definition of \alert{\raiseembn} in Gödel's translation %do I have time for this??? Probably not, so I'll probably skip this
     \end{itemize}
   \end{frame}
 
   \begin{frame}{Experience Working with Agda}
     \begin{itemize}
-      \item[\textbullet] Intersting learning experience \pause
-      \item[\textbullet] High learning curve \pause
-      \item[\textbullet] Hole based programming is amazing \pause
-      \item[\textbullet] Error message are not always helpful \pause 
+      \item[\textbullet] Intersting learning experience
+      \item[\textbullet] High learning curve
+      \item[\textbullet] Hole based programming is amazing
+      \item[\textbullet] Error message are not always helpful
       \item[\textbullet] But give it a try! \pause
         \begin{itemize}
-          \item[--] Follow the online \alert{PLFA} book (Programming Language Foundations in Agda) \pause
+          \item[--] Follow the online \alert{PLFA} book (Programming Language Foundations in Agda)
           \item[--] \alert{\url{https://plfa.github.io/}} 
         \end{itemize}  
     \end{itemize}
@@ -410,10 +410,10 @@
   
   \begin{frame}{Conclusion}
     \begin{itemize}
-      \item[\textbullet] Recap of the \lc \pause
-      \item[\textbullet] Explained \alert{\lab} \pause
-      \item[\textbullet] Defined the unifying relation \alert{\textsf{cbb}} \pause
-      \item[\textbullet] \alert{Girard's} translation \pause
+      \item[\textbullet] Recap of the \lc
+      \item[\textbullet] Explained \alert{\lab}
+      \item[\textbullet] Defined the unifying relation \alert{\textsf{cbb}}
+      \item[\textbullet] \alert{Girard's} translation
       \item[\textbullet] Formally proved the main properties of the translations    
     \end{itemize}
   \end{frame}
