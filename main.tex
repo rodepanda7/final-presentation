@@ -142,24 +142,24 @@
 
   \begin{frame}{Approaches to Unification}
 
-  \begin{block}{\alert{Thunks} and \alert{CPS} Translation} \pause
+  \begin{block}{\alert{Thunks} and \alert{CPS} Translation}
     \begin{itemize}
-      \item[\textbullet] Wrappers around expressions to delay evaluation \pause
-      \item[\textbullet] Continuous Passing Style translation \pause
+      \item[\textbullet] Wrappers around expressions to delay evaluation
+      \item[\textbullet] Continuous Passing Style translation 
     \end{itemize}
     
-  \end{block}
+  \end{block}\pause
 
-  \begin{block}{\alert{Linear} Logic} \pause
+  \begin{block}{\alert{Linear} Logic}
     \begin{itemize}
-      \item[\textbullet] Explicit control over resources \pause
-      \item[\textbullet] Arguments correspond to resource usage \pause
+      \item[\textbullet] Explicit control over resources
+      \item[\textbullet] Arguments correspond to resource usage
     \end{itemize}
-  \end{block}
+  \end{block} \pause
 
-  \begin{block}{\alert{Modal} Logic} \pause
+  \begin{block}{\alert{Modal} Logic}
     \begin{itemize}
-      \item[\textbullet] Adds box modality \pause
+      \item[\textbullet] Adds box modality
       \item[\textbullet] Boxed terms are treated as values
     \end{itemize}
   \end{block}
@@ -168,9 +168,9 @@
 
   \begin{frame}{Formalisation in Agda}
     \begin{itemize}
-      \item[\textbullet] \alert{Agda}: programming language and proof assistant \pause
-      \item[\textbullet] Unification of \alert{\textsf{cbn}} and \alert{\textsf{cbv}} into a universal framework \pause  
-      \item[\textbullet] Formalise this framework in \alert{Agda} \pause
+      \item[\textbullet] \alert{Agda}: programming language and proof assistant
+      \item[\textbullet] Unification of \alert{\textsf{cbn}} and \alert{\textsf{cbv}} into a universal framework  
+      \item[\textbullet] Formalise this framework in \alert{Agda}
       \item[\textbullet] Proof of the main properties of the framework
     \end{itemize}
   \end{frame}
@@ -220,7 +220,7 @@
     \end{block}
   \end{frame}
 
-  \begin{frame}{Call-by-name evaluation \lc}
+  \begin{frame}{Call-by-name \lc (\lan)}
     \begin{block}{\boldmath${\beta}$-reduction}
       \begin{align*}
         (\lamb{x}{M})N \red M \subst{x}{N} \quad \quad (\bn)
@@ -241,7 +241,7 @@
     \end{block}
   \end{frame}
 
-  \begin{frame}{Call-by-box \lc}
+  \begin{frame}{Call-by-box \lc (\lab)}
     \begin{block}{\boldmath${\lambda}$-terms}
       \begin{align*}    
         \begin{grammar}{
@@ -255,6 +255,7 @@
         \item[\textbullet] $\varepsilon$: \alert{unbox} operator
         \item[\textbullet] \textsf{box}: \alert{box} operator
         \item[\textbullet] paramters of abstractions are \alert{boxed}
+        \item[\textbullet] \alert{box} gives control over what to evaluate 
       \end{itemize}
     \end{block} \pause
     \begin{block}{Types}
@@ -334,6 +335,20 @@
     \end{block}
   \end{frame}
 
+  \begin{frame}{Example of cbb under Girard's embedding}
+    \begin{block}{\boldmath${\beta}$-reduction}
+      \begin{align*}
+        (\lamb{x}{M})\boxi{N} \red M \subst{\boxe{x}}{N} \quad \quad (\bb)
+      \end{align*}
+    \end{block} \pause
+    \begin{block}{Example \alert{cbb} evaluation}
+      \begin{align*}
+        \onslide<2-> { \alert{((\lamb{x}{\boxe{x}}) \ \boxi{\lamb{y}{\boxe{y}}})} \ \boxi{\boxe{z}} & \redbn \alert{(\lamb{y}{\boxe{y}}) \boxi{\boxe{z}}}} \\
+        \onslide<3-> { & \redbn \boxe{z} }
+      \end{align*}
+    \end{block}
+  \end{frame}
+
   \begin{frame}{Girard's Image}
     \begin{block}{Well-typed terms after translation}
       \vspace{7pt}
@@ -355,6 +370,7 @@
 
   \begin{frame}{What is Agda?}
     \begin{itemize}
+      \item \includegraphics[width=0.5\textwidth]{Agda.png}
       \item[\textbullet] Functional programming language
       \item[\textbullet] Inspired by Haskell
       \item[\textbullet] Proof assistant
@@ -419,6 +435,10 @@
   \end{frame}
 
   \section{Questions?}
+
+  % \begin{frame}{Questions?}
+  %   test
+  % \end{frame}
 
   % \section{Challenges of Formalisation}
   % \begin{frame}{Overview Challenges}
